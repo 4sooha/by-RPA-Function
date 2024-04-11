@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="자음찾기" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="593,2004" sap2010:WorkflowViewState.IdRef="자음찾기_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="자음찾기" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="593,2106" sap2010:WorkflowViewState.IdRef="자음찾기_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -81,7 +81,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Dim strText As String = &quot;글자&quot;&#xD;&#xA;&#xD;&#xA;'첫 번째 문자의 유니코드 값&#xD;&#xA;Dim intUnicode As Integer = AscW(strText (0))&#xD;&#xA;&#xD;&#xA;If intUnicode &gt;= &amp;HAC00 AndAlso intUnicode &lt;= &amp;HD7A3 Then&#xD;&#xA;If intUnicode &gt;= 44032 AndAlso intUnicode  &lt;= 55203 Then&#xD;&#xA;&#xD;&#xA;    ' 자음 인덱스 범위로 변환&#xD;&#xA;    Dim initialIndex As Integer = (unicodeValue - &amp;HAC00) \ &amp;H24C&#xD;&#xA;    Dim int자음Index As Integer = (intUnicode - &amp;HAC00) \ &amp;H24C&#xD;&#xA;    &#xD;&#xA;    ' 자음 문자 계산&#xD;&#xA;    Dim initialConsonants As String = &quot;ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ&quot;&#xD;&#xA;    Dim str자음모음 As String = &quot;ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ&quot;&#xD;&#xA;    Dim initialConsonant As Char = initialConsonants(initialIndex)&#xD;&#xA;    Dim str자음 As Char = str자음모음(int자음Index)&#xD;&#xA;    &#xD;&#xA;    MessageBox.Show($&quot;'{strText}'의 초성은 '{str자음}'입니다.&quot;)&#xD;&#xA;Else&#xD;&#xA;    MessageBox.Show(&quot;한글이 아닙니다.&quot;)&#xD;&#xA;End If&#xD;&#xA;" DisplayName="자음찾기" sap:VirtualizedContainerService.HintSize="592,1939" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Dim strText As String = &quot;글자&quot;&#xD;&#xA;&#xD;&#xA;'첫 번째 문자의 유니코드 값 가져오기&#xD;&#xA;Dim intUnicode As Integer = AscW(strText (0))&#xD;&#xA;&#xD;&#xA;'유니코드 값이 한글 범위 내에 있는지 확인&#xD;&#xA;If intUnicode &gt;= &amp;HAC00 AndAlso intUnicode &lt;= &amp;HD7A3 Then&#xD;&#xA;If intUnicode &gt;= 44032 AndAlso intUnicode  &lt;= 55203 Then&#xD;&#xA;&#xD;&#xA;    ' 자음 인덱스 범위로 변환&#xD;&#xA;    Dim int자음Index As Integer = (intUnicode - &amp;HAC00) \ &amp;H24C&#xD;&#xA;    &#xD;&#xA;    ' 자음 문자 계산&#xD;&#xA;    Dim str자음모음 As String = &quot;ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ&quot;&#xD;&#xA;    Dim str자음 As Char = str자음모음(int자음Index)&#xD;&#xA;    &#xD;&#xA;    MessageBox.Show($&quot;'{strText}'의 초성은 '{str자음}'입니다.&quot;)&#xD;&#xA;Else&#xD;&#xA;    MessageBox.Show(&quot;한글이 아닙니다.&quot;)&#xD;&#xA;End If&#xD;&#xA;" DisplayName="자음찾기" sap:VirtualizedContainerService.HintSize="592,2041" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strText" />
       <Variable x:TypeArguments="x:Int32" Name="intUnicode" />
@@ -108,7 +108,7 @@
         <OutArgument x:TypeArguments="x:String">[strText]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="530,229" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="&#xA;intUnicode = 첫 번째 문자의 유니코드 값 가져오기" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="530,229" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -143,28 +143,33 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </WriteLine>
-    <If sap2010:Annotation.AnnotationText="If intUnicode &gt;= &amp;HAC00 AndAlso intUnicode &lt;= &amp;HD7A3 Then&#xD;&#xA;If intUnicode &gt;= 44032 AndAlso intUnicode  &lt;= 55203 Then" Condition="[intUnicode &gt;= &amp;HAC00 AndAlso intUnicode &lt;= &amp;HD7A3]" sap:VirtualizedContainerService.HintSize="530,613" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="유니코드 값이 한글 범위 내에 있는지 확인&#xD;&#xA;If intUnicode &gt;= &amp;HAC00 AndAlso intUnicode &lt;= &amp;HD7A3 Then&#xD;&#xA;If intUnicode &gt;= 44032 AndAlso intUnicode  &lt;= 55203 Then" Condition="[intUnicode &gt;= &amp;HAC00 AndAlso intUnicode &lt;= &amp;HD7A3]" sap:VirtualizedContainerService.HintSize="530,745" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,343" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,460" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign sap2010:Annotation.AnnotationText="[초성 인덱스를 구하는 방법]&#xD;&#xA;1. 주어진 텍스트의 첫 번째 문자의 유니코드 값을 가져온다.&#xD;&#xA;2. 해당 유니코드 값에서 기본 한글 시작 코드 포인트인 &amp;HAC00을 뺀다.&#xD;&#xA;3. 이를 초성 인덱스 범위로 나눠서 해당 초성의 인덱스를 구합니다.&#xD;&#xA;&#xD;&#xA;Cint(Math.Floor((intUnicode - &amp;HAC00) \ &amp;H24C))&#xD;&#xA;-&gt; 계산 후 소수점 아래는 버리고 int로 형변환" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[int자음Index]</OutArgument>
             </Assign.To>
             <Assign.Value>
               <InArgument x:TypeArguments="x:Int32">[Cint(Math.Floor((intUnicode - &amp;HAC00) \ &amp;H24C))]</InArgument>
             </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <Assign sap2010:Annotation.AnnotationText="ChrW(unicodeValue)" sap:VirtualizedContainerService.HintSize="434,136" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign sap2010:Annotation.AnnotationText="int자음Index를 사용하여 해당하는 자음 가져오기" sap:VirtualizedContainerService.HintSize="434,136" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[str자음]</OutArgument>
             </Assign.To>
